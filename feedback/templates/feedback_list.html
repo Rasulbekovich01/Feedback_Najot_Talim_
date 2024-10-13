@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (head content) ... -->
+</head>
+<body>
+    <h1>{% trans "Feedback" %}</h1>
+    <ul>
+        {% for feedback in feedback_list %}
+            <li>
+                {{ feedback.content }} 
+                {% if not feedback.is_anonymous %}
+                    - by {{ feedback.user.username }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'feedback:feedback_add' %}" class="btn btn-primary">{% trans "Add Feedback" %}</a>
+</body>
+</html>
